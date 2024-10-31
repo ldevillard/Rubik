@@ -1,5 +1,6 @@
 using Rubik.Components;
 using MudBlazor.Services;
+using Rubik.Components.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddScoped(sp => new HttpClient());
 builder.Services.AddMudServices();
+builder.Services.AddSingleton<Theme>();
 
 var app = builder.Build();
 

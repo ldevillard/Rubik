@@ -30,6 +30,9 @@ namespace Rubik.Components.Data
 
         [JsonPropertyName("gender")]
         public string Gender { get; set; }
+
+        [JsonPropertyName("avatar")]
+        public Avatar AvatarInfo { get; set; }
     }
 
     public class Country
@@ -39,5 +42,11 @@ namespace Rubik.Components.Data
 
         [JsonPropertyName("iso2")]
         public string Iso2 { get; set; }
+    }
+
+    public class Avatar
+    {
+        [JsonPropertyName("url")]
+        public string Url { get; set; }
     }
 }

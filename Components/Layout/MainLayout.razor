@@ -1,6 +1,8 @@
 ﻿@inherits LayoutComponentBase
+@inject Rubik.Components.Data.Theme Theme
+
 @* Required *@
-<MudThemeProvider />
+<MudThemeProvider IsDarkMode="true" Theme="@Theme.CustomTheme" />
 <MudPopoverProvider />
 
 @* Needed for dialogs *@
@@ -10,15 +12,12 @@
 <MudSnackbarProvider />
 
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-
+    <MudAppBar Color="Color.Primary" Fixed="true" Dense="true" Elevation="1">
+        <NavLink href="profile">
+            <MudText Style="text-align: center;">Profile</MudText>
+        </NavLink>
+    </MudAppBar>
+    <main style="padding-top: 64px;">
         <article class="content px-4">
             @Body
         </article>

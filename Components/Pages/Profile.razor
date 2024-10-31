@@ -3,32 +3,34 @@
 
 <PageTitle>Profile</PageTitle>
 
-<h1>Profile</h1>
-
 @if (personResponse == null)
 {
     <p>Loading...</p>
 }
 else
 {
+    <MudContainer MaxWidth="MaxWidth.Small">
+            <MudImage ObjectFit="ObjectFit.Cover" Src=@personResponse.Person.AvatarInfo.Url Width="400" Height="300" Class="rounded-lg" Style="margin-bottom: 25px;"/>
+    </MudContainer>
+
     <MudTable Items="@personResponseList" Striped="true" Hover="true">
         <HeaderContent>
-            <MudTh>WCA Id</MudTh>
-            <MudTh>Name</MudTh>
-            <MudTh>Country</MudTh>
-            <MudTh>Competitions Count</MudTh>
+            <MudTh Style="text-align:center">WCA ID</MudTh>
+            <MudTh Style="text-align:center">Name</MudTh>
+            <MudTh Style="text-align:center">Country</MudTh>
+            <MudTh Style="text-align:center">Competitions Count</MudTh>
         </HeaderContent>
         <RowTemplate>
             <MudTr>
-                <MudTd>@personResponse.Person.PersonId</MudTd>
-                <MudTd>@personResponse.Person.Name</MudTd>
+                <MudTd Style="text-align:center">@personResponse.Person.PersonId</MudTd>
+                <MudTd Style="text-align:center">@personResponse.Person.Name</MudTd>
                 <MudTd>
-                    <div style="display: flex; align-items: center;">
+                    <div style="text-align:center">
                         <img src="@GetFlagUrl(personResponse.Person.CountryIso2)" alt="@personResponse.Person.CountryIso2" style="width: 20px; height: 15px; margin-right: 5px;" />
                         @personResponse.Person.CountryInfo.Name
                     </div>
                 </MudTd>
-                <MudTd>@personResponse.CompetitionCount</MudTd>
+                <MudTd Style="text-align:center">@personResponse.CompetitionCount</MudTd>
             </MudTr>
         </RowTemplate>
     </MudTable>
