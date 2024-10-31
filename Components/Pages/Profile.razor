@@ -1,0 +1,35 @@
+﻿@page "/profile"
+@inject HttpClient Http
+
+<PageTitle>Profile</PageTitle>
+
+<h1>Profile</h1>
+
+@if (person == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <MudTable Items="@personList" Striped="true" Hover="true">
+        <HeaderContent>
+            <MudTh>WCA Id</MudTh>
+            <MudTh>Name</MudTh>
+            <MudTh>Country</MudTh>
+            <MudTh>Competitions Count</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTr>
+                <MudTd>@person.PersonId</MudTd>
+                <MudTd>@person.Name</MudTd>
+                <MudTd>
+                    <div style="display: flex; align-items: center;">
+                        <img src="@GetFlagUrl(@context.Country)" alt="@context.Country" style="width: 20px; height: 15px; margin-right: 5px;" />
+                        @countryName.Common
+                    </div>
+                </MudTd>
+                <MudTd>@person.CompetitionsCount</MudTd>
+            </MudTr>
+        </RowTemplate>
+    </MudTable>
+}
