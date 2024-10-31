@@ -9,33 +9,18 @@ namespace Rubik.Components.Pages
         [Inject]
         private HttpClient Client { get; set; }
 
-        private Person person;
-        private CountryName countryName;
-        private List<Person> personList = new List<Person>();
+        private PersonResponse personResponse;
+        private List<PersonResponse> personResponseList = new List<PersonResponse>();
 
         private string GetFlagUrl(string countryCode)
         {
             return $"https://flagcdn.com/w20/{countryCode.ToLower()}.png";
         }
 
-        private async Task GetCountryName(string countryCode)
-        {
-            var response = await Http.GetFromJsonAsync<CountryInfo[]>($"https://restcountries.com/v3.1/alpha/{countryCode}");
-            if (response != null && response.Length > 0)
-            {
-                countryName = response[0].Name;
-            }
-            else
-            {
-                countryName = new CountryName();
-            }
-        }
-
         protected override async Task OnInitializedAsync()
         {
-            person = await Client.GetFromJsonAsync<Person>("https://raw.githubusercontent.com/robiningelbrecht/wca-rest-api/master/api/persons/2015DEVI01.json");
-            personList.Add(person);
-            await GetCountryName(person.Country);
+            personResponse = await Client.GetFromJsonAsync<PersonResponse>("https://www.worldcubeassociation.org/api/v0/persons/2015DEVI01");
+            personResponseList.Add(personResponse);
         }
     }
 }
