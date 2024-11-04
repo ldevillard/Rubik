@@ -9,11 +9,14 @@
 }
 else
 {
-    <MudContainer MaxWidth="MaxWidth.Small">
-            <MudImage ObjectFit="ObjectFit.Cover" Src=@personResponse.Person.AvatarInfo.Url Width="400" Height="300" Class="rounded-lg" Style="margin-bottom: 25px;"/>
+    <MudContainer MaxWidth="MaxWidth.Small" Style="display: flex; flex-direction: column; align-items: center;">
+        <MudText Style="margin-bottom: 25px;" Typo="Typo.h4">@personResponse.Person.Name</MudText>
+        <MudLink Href=@($"https://www.worldcubeassociation.org/persons/{wcaId}") Target="_blank">
+            <MudImage Style="margin-bottom: 25px;" ObjectFit="ObjectFit.Cover" Src=@personResponse.Person.AvatarInfo.Url Width="400" Height="300" Class="rounded-lg" />
+        </MudLink>
     </MudContainer>
 
-    <MudTable Items="@personResponseList" Striped="true" Hover="true">
+    <MudTable Items="@personResponseList" Style="margin-bottom: 25px;">
         <HeaderContent>
             <MudTh Style="text-align:center">WCA ID</MudTh>
             <MudTh Style="text-align:center">Name</MudTh>
@@ -31,6 +34,63 @@ else
                     </div>
                 </MudTd>
                 <MudTd Style="text-align:center">@personResponse.CompetitionCount</MudTd>
+            </MudTr>
+        </RowTemplate>
+    </MudTable>
+
+    <MudContainer MaxWidth="MaxWidth.Small" Style="display: flex; flex-direction: column; align-items: center;">
+        <MudText Style="margin-bottom: 25px;" Typo="Typo.h4">Personal Records</MudText>
+    </MudContainer>
+    <MudTable Items="@personResponseList" Style="margin-bottom: 25px;" Hover="true">
+        <HeaderContent>
+            <MudTh Style="text-align:center">Event</MudTh>
+            <MudTh Style="text-align:center">NR</MudTh>
+            <MudTh Style="text-align:center">CR</MudTh>
+            <MudTh Style="text-align:center">WR</MudTh>
+            <MudTh Style="text-align:center">Single</MudTh>
+            <MudTh Style="text-align:center">Average</MudTh>
+            <MudTh Style="text-align:center">NR</MudTh>
+            <MudTh Style="text-align:center">CR</MudTh>
+            <MudTh Style="text-align:center">WR</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTr>
+                <MudTd Class="cubing-icon event-222" Style="text-align:center"></MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.TwoByTwo.Single.CountryRank</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.TwoByTwo.Single.ContinentRank</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.TwoByTwo.Single.WorldRank</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.TwoByTwo.Single.Best</MudTd>
+
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.TwoByTwo.Average.Best</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.TwoByTwo.Average.CountryRank</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.TwoByTwo.Average.ContinentRank</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.TwoByTwo.Average.WorldRank</MudTd>
+            </MudTr>
+
+            <MudTr>
+                <MudTd Class="cubing-icon event-333" Style="text-align:center"></MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.ThreeByThree.Single.CountryRank</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.ThreeByThree.Single.ContinentRank</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.ThreeByThree.Single.WorldRank</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.ThreeByThree.Single.Best</MudTd>
+
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.ThreeByThree.Average.Best</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.ThreeByThree.Average.CountryRank</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.ThreeByThree.Average.ContinentRank</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.ThreeByThree.Average.WorldRank</MudTd>
+            </MudTr>
+
+            <MudTr>
+                <MudTd Class="cubing-icon event-444" Style="text-align:center"></MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.FourByFour.Single.CountryRank</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.FourByFour.Single.ContinentRank</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.FourByFour.Single.WorldRank</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.FourByFour.Single.Best</MudTd>
+
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.FourByFour.Average.Best</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.FourByFour.Average.CountryRank</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.FourByFour.Average.ContinentRank</MudTd>
+                <MudTd Style="text-align:center">@personResponse.PersonalRecords.FourByFour.Average.WorldRank</MudTd>
             </MudTr>
         </RowTemplate>
     </MudTable>

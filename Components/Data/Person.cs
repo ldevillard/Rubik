@@ -9,6 +9,9 @@ namespace Rubik.Components.Data
 
         [JsonPropertyName("competition_count")]
         public int CompetitionCount { get; set; }
+
+        [JsonPropertyName("personal_records")]
+        public Records PersonalRecords { get; set; }
     }
 
     public class Person
@@ -33,15 +36,6 @@ namespace Rubik.Components.Data
 
         [JsonPropertyName("avatar")]
         public Avatar AvatarInfo { get; set; }
-    }
-
-    public class Country
-    {
-        [JsonPropertyName("name")]
-        public string Name { get; set; }
-
-        [JsonPropertyName("iso2")]
-        public string Iso2 { get; set; }
     }
 
     public class Avatar

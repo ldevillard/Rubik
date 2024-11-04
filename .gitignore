@@ -49,6 +49,8 @@ logs/
 *.sln.docstates
 .vscode/*
 .idea/
+.vs/*
+.vs/
 
 # Backup & Miscellaneous
 *.bak
@@ -57,7 +59,6 @@ logs/
 
 # Additional folders or files to ignore for Blazor
 wwwroot/dist/
-wwwroot/css/
 wwwroot/js/
 
 # JetBrains Rider
