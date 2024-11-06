@@ -8,8 +8,9 @@ namespace Rubik.Components.Data
         {
             PaletteDark = new PaletteDark()
             {
-                Background = "#1A1A27",
+                Background = "#1f1f30",
                 Surface = "#151521",
+                TableStriped = "#1a1a29",
             }
         };
     }

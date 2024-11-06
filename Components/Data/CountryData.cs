@@ -2,7 +2,7 @@
 
 namespace Rubik.Components.Data
 {
-    public class Country
+    public class CountryData
     {
         [JsonPropertyName("name")]
         public string Name { get; set; }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Rubik.Components.Data;
-using System.Diagnostics.Metrics;
+using Rubik.Components.Stats;
 
 namespace Rubik.Components.Pages
 {

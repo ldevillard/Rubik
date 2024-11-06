@@ -1,0 +1,35 @@
+﻿@if (EventToDisplay != null)
+{
+    <MudTr>
+        <MudTd Class="@Utility.Utility.GetEventIconStyle(Type)" Style="text-align:center"></MudTd>
+        @if (EventToDisplay.Single != null)
+        {
+            <MudTd Style="text-align:center; color: gray;">@EventToDisplay.Single.CountryRank</MudTd>
+            <MudTd Style="text-align:center; color: gray;">@EventToDisplay.Single.ContinentRank</MudTd>
+            <MudTd Style="text-align:center; color: gray;">@EventToDisplay.Single.WorldRank</MudTd>
+            <MudTd Style="text-align:center"><b>@Utility.Utility.GetTimeSolveFormat(EventToDisplay.Single.Best)</b></MudTd>
+        }
+        else
+        {
+            <MudTd Style="text-align:center"></MudTd>
+            <MudTd Style="text-align:center"></MudTd>
+            <MudTd Style="text-align:center"></MudTd>
+            <MudTd Style="text-align:center"></MudTd>
+        }
+
+        @if (EventToDisplay.Average != null)
+        {
+            <MudTd Style="text-align:center"><b>@Utility.Utility.GetTimeSolveFormat(EventToDisplay.Average.Best)</b></MudTd>
+            <MudTd Style="text-align:center; color: gray">@EventToDisplay.Average.CountryRank</MudTd>
+            <MudTd Style="text-align:center; color: gray">@EventToDisplay.Average.ContinentRank</MudTd>
+            <MudTd Style="text-align:center; color: gray">@EventToDisplay.Average.WorldRank</MudTd>
+        }
+        else
+        {
+            <MudTd Style="text-align:center"></MudTd>
+            <MudTd Style="text-align:center"></MudTd>
+            <MudTd Style="text-align:center"></MudTd>
+            <MudTd Style="text-align:center"></MudTd>
+        }
+    </MudTr>
+}
