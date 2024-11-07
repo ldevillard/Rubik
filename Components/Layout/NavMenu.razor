@@ -1,18 +1,10 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">Rubik</a>
+﻿<MudAppBar Color="Color.Primary" Fixed="true" Dense="true">
+    <div Style="margin-left: auto; display: flex; align-items:center">
+        <MudLink Href="profile" Style="margin-left: 25px">
+            <MudIcon Icon="@Icons.Material.Filled.Person" Title="Profile" Color="Color.Default" Class="custom-link" />
+        </MudLink>
+        <MudLink Href="/" Style="margin-left: 25px">
+            <MudIcon Icon="@Icons.Material.Filled.Home" Title="Home" Class="custom-link" />
+        </MudLink>
     </div>
-</div>
-
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
-
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="profile">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Profile
-            </NavLink>
-        </div>
-    </nav>
-</div>
-
+</MudAppBar>

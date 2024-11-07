@@ -12,16 +12,7 @@
 <MudSnackbarProvider />
 
 <div class="page">
-    <MudAppBar Color="Color.Primary" Fixed="true" Dense="true">
-        <div Style="margin-left: auto; display: flex; align-items:center">
-            <MudLink Href="profile" Style="margin-left: 25px">
-                <MudIcon Icon="@Icons.Material.Filled.Person" Title="Profile" Color="Color.Default" Class="custom-link"/>
-            </MudLink>
-            <MudLink Href="/" Style="margin-left: 25px">
-                <MudIcon Icon="@Icons.Material.Filled.Home" Title="Home" Class="custom-link"/>
-            </MudLink>
-        </div>
-    </MudAppBar>
+    <NavMenu/>
     <main style="padding-top: 64px;">
         <article class="content px-4">
             @Body
