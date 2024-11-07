@@ -1,4 +1,28 @@
 ﻿@page "/"
+@inject IJSRuntime JSRuntime
+@code {
+    // Cette méthode sera appelée lorsque l'événement JavaScript est déclenché
+    [JSInvokable]
+    public static Task OnKeyDown(string key)
+    {
+        Console.WriteLine($"Touche pressée : {key}");
+        return Task.CompletedTask;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // S'assurez que l'initialisation de Blazor est terminée avant d'ajouter l'écouteur d'événements
+            await JSRuntime.InvokeVoidAsync("eval", @"
+                window.addEventListener('keydown', function(event) {
+                    DotNet.invokeMethodAsync('Rubik', 'OnKeyDown', event.key)
+                        .catch(error => console.error('Erreur Blazor: ' + error));
+                });
+            ");
+        }
+    }
+}
 
 <PageTitle>Home</PageTitle>
 

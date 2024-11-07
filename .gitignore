@@ -59,7 +59,6 @@ logs/
 
 # Additional folders or files to ignore for Blazor
 wwwroot/dist/
-wwwroot/js/
 
 # JetBrains Rider
 .idea/
