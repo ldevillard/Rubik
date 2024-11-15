@@ -9,6 +9,7 @@ namespace RubikApp.Client.Components.Counter
         public void IncrementCount() 
         {
             currentCount++;
+            StateHasChanged();
         }
     }
 }
