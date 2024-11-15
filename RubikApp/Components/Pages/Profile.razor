@@ -1,0 +1,75 @@
+﻿@page "/profile"
+@inject HttpClient Http
+
+<PageTitle>Profile</PageTitle>
+
+@if (personResponse == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <MudContainer MaxWidth="MaxWidth.Small" Style="display: flex; flex-direction: column; align-items: center;">
+        <MudText Style="margin-bottom: 25px;" Typo="Typo.h4">@personResponse.Person.Name</MudText>
+        
+        <MudLink Href=@($"https://www.worldcubeassociation.org/persons/{wcaId}") Target="_blank">
+            <MudImage Style="margin-bottom: 25px;" ObjectFit="ObjectFit.Cover" Src=@personResponse.Person.AvatarInfo.Url Width="400" Height="300" Class="rounded-lg" />
+        </MudLink>
+
+        <MudTable Items="@personResponseList" Style="margin-bottom: 25px; min-width: 1000px">
+            <HeaderContent>
+                <MudTh Style="text-align:center">WCA ID</MudTh>
+                <MudTh Style="text-align:center">Name</MudTh>
+                <MudTh Style="text-align:center">Country</MudTh>
+                <MudTh Style="text-align:center">Competitions Count</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTr>
+                    <MudTd Style="text-align:center">@personResponse.Person.PersonId</MudTd>
+                    <MudTd Style="text-align:center">@personResponse.Person.Name</MudTd>
+                    <MudTd>
+                        <div style="text-align:center">
+                            <img src="@GetFlagUrl(personResponse.Person.CountryIso2)" alt="@personResponse.Person.CountryIso2" style="width: 20px; height: 15px; margin-right: 5px;" />
+                            @personResponse.Person.CountryInfo.Name
+                        </div>
+                    </MudTd>
+                    <MudTd Style="text-align:center">@personResponse.CompetitionCount</MudTd>
+                </MudTr>
+            </RowTemplate>
+        </MudTable>
+
+        <MudText Style="margin-bottom: 25px;" Typo="Typo.h4">Personal Records</MudText>
+
+        <MudTable Dense="true" Items="@personResponseList" Style="margin-bottom: 25px; min-width: 1000px" Hover="true" Striped="true">
+            <RowTemplate>
+                <MudTh Style="text-align:center">Event</MudTh>
+                <MudTh Style="text-align:center">NR</MudTh>
+                <MudTh Style="text-align:center">CR</MudTh>
+                <MudTh Style="text-align:center">WR</MudTh>
+                <MudTh Style="text-align:center">Single</MudTh>
+                <MudTh Style="text-align:center">Average</MudTh>
+                <MudTh Style="text-align:center">NR</MudTh>
+                <MudTh Style="text-align:center">CR</MudTh>
+                <MudTh Style="text-align:center">WR</MudTh>
+
+                <RubikApp.Components.Stats.Records Type="Types.EventType.CUBE33" EventToDisplay="personResponse.PersonalRecords.ThreeByThree"/>
+                <RubikApp.Components.Stats.Records Type="Types.EventType.CUBE22" EventToDisplay="personResponse.PersonalRecords.TwoByTwo"/>
+                <RubikApp.Components.Stats.Records Type="Types.EventType.CUBE44" EventToDisplay="personResponse.PersonalRecords.FourByFour"/>
+                <RubikApp.Components.Stats.Records Type="Types.EventType.CUBE55" EventToDisplay="personResponse.PersonalRecords.FiveByFive"/>
+                <RubikApp.Components.Stats.Records Type="Types.EventType.CUBE66" EventToDisplay="personResponse.PersonalRecords.SixBySix"/>
+                <RubikApp.Components.Stats.Records Type="Types.EventType.CUBE77" EventToDisplay="personResponse.PersonalRecords.SevenBySeven"/>
+                <RubikApp.Components.Stats.Records Type="Types.EventType.BF" EventToDisplay="personResponse.PersonalRecords.Blindfolded"/>
+                <RubikApp.Components.Stats.Records Type="Types.EventType.BFM" EventToDisplay="personResponse.PersonalRecords.MultiBlindefolded"/>
+                <RubikApp.Components.Stats.Records Type="Types.EventType.FM" EventToDisplay="personResponse.PersonalRecords.FewestMove"/>
+                <RubikApp.Components.Stats.Records Type="Types.EventType.OH" EventToDisplay="personResponse.PersonalRecords.OneHand"/>
+                <RubikApp.Components.Stats.Records Type="Types.EventType.BF4" EventToDisplay="personResponse.PersonalRecords.BlindfoldedFour"/>
+                <RubikApp.Components.Stats.Records Type="Types.EventType.BF5" EventToDisplay="personResponse.PersonalRecords.BlindfoldedFive"/>
+                <RubikApp.Components.Stats.Records Type="Types.EventType.CLOCK" EventToDisplay="personResponse.PersonalRecords.Clock"/>
+                <RubikApp.Components.Stats.Records Type="Types.EventType.PYRA" EventToDisplay="personResponse.PersonalRecords.Pyraminx"/>
+                <RubikApp.Components.Stats.Records Type="Types.EventType.MEGA" EventToDisplay="personResponse.PersonalRecords.Megaminx"/>
+                <RubikApp.Components.Stats.Records Type="Types.EventType.SKEWB" EventToDisplay="personResponse.PersonalRecords.Skewb"/>
+                <RubikApp.Components.Stats.Records Type="Types.EventType.SQ1" EventToDisplay="personResponse.PersonalRecords.SquareOne"/>
+            </RowTemplate>
+        </MudTable>
+    </MudContainer>
+}
