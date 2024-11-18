@@ -7,9 +7,9 @@ namespace RubikApp.Client.Components.Pages
     {
         Counter.Counter Counter;
 
-        void CallIncrement() 
+        void timerTrigger() 
         {
-            Counter?.IncrementCount();
+            Counter?.TimerTrigger();
         }
     }
 }

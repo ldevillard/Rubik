@@ -7,14 +7,14 @@ namespace RubikApp.Components.Pages
     public partial class Profile : ComponentBase
     {
         [Inject]
-        private HttpClient client { get; set; }
+        HttpClient client { get; set; }
 
-        private string wcaId = "2015DEVI01";
+        string wcaId = "2015DEVI01";
 
-        private PersonResponse personResponse;
-        private List<PersonResponse> personResponseList = new List<PersonResponse>();
+        PersonResponse personResponse;
+        List<PersonResponse> personResponseList = new List<PersonResponse>();
 
-        private string GetFlagUrl(string countryCode)
+        string getFlagUrl(string countryCode)
         {
             return $"https://flagcdn.com/w20/{countryCode.ToLower()}.png";
         }
