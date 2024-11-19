@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubikApp", "RubikApp\RubikApp.csproj", "{13924CE2-FA1A-40D2-A566-C982D629A495}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RubikApp", "RubikApp\RubikApp.csproj", "{13924CE2-FA1A-40D2-A566-C982D629A495}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubikApp.Client", "RubikApp.Client\RubikApp.Client.csproj", "{102BA436-8FF3-4252-A7AC-E9B73C9C9A2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RubikApp.Client", "RubikApp.Client\RubikApp.Client.csproj", "{102BA436-8FF3-4252-A7AC-E9B73C9C9A2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

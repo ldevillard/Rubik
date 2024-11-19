@@ -21,6 +21,7 @@ namespace RubikApp.Components.Pages
 
         protected override async Task OnInitializedAsync()
         {
+            StateHasChanged();
             personResponse = await client.GetFromJsonAsync<PersonResponse>($"https://www.worldcubeassociation.org/api/v0/persons/{wcaId}");
             personResponseList.Add(personResponse);
         }
