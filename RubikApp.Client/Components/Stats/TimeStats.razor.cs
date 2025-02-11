@@ -9,12 +9,14 @@ namespace RubikApp.Client.Components.Stats
 
         TimeSpan lastTime;
         TimeSpan averageOfFive;
+        TimeSpan averageOfTwelve;
 
         public void RecordTime(TimeSpan timeToRecord) 
         {
             currentTimes.Add(timeToRecord);
             lastTime = timeToRecord;
-            computeAverageOfFive();
+            averageOfFive = computeAverage(5);
+            averageOfTwelve = computeAverage(12);
             StateHasChanged();
         }
 
@@ -34,26 +36,28 @@ namespace RubikApp.Client.Components.Stats
             }
         }
 
-        void computeAverageOfFive()
+        TimeSpan computeAverage(int averageOfNumber)
         {
-            if (currentTimes.Count < 5)
+            TimeSpan returnedAverage =  TimeSpan.Zero;
+            
+            if (currentTimes.Count < averageOfNumber)
             {
-                averageOfFive = TimeSpan.Zero;
-                return;
+                return returnedAverage;
             }
 
-            // Prendre les 5 derniers temps
-            List<TimeSpan> lastFiveTimes = currentTimes.Skip(currentTimes.Count - 5).ToList();
+            // Take last averageOfNumber times
+            List<TimeSpan> lastTimes = currentTimes.Skip(currentTimes.Count - averageOfNumber).ToList();
 
-            // Trier les temps pour trouver le meilleur et le pire
-            lastFiveTimes.Sort();
+            // Sort them to find the best and the worst
+            lastTimes.Sort();
 
-            // Supprimer le meilleur et le pire
-            lastFiveTimes.RemoveAt(0); // Supprimer le plus petit (meilleur)
-            lastFiveTimes.RemoveAt(lastFiveTimes.Count - 1); // Supprimer le plus grand (pire)
+            // Remove best and worst times
+            lastTimes.RemoveAt(0);
+            lastTimes.RemoveAt(lastTimes.Count - 1);
 
-            // Calculer la moyenne des trois temps restants
-            averageOfFive = TimeSpan.FromTicks((long)lastFiveTimes.Average(ts => ts.Ticks));
+            // Compute the average of the remaining times
+            returnedAverage = TimeSpan.FromTicks((long)lastTimes.Average(ts => ts.Ticks));
+            return returnedAverage;
         }
     }
 }

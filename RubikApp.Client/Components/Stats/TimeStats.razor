@@ -1,11 +1,15 @@
-﻿<div style="position: absolute; bottom: 20px; right: 50px;">
-    <MudCard>
+﻿<div style="position: absolute; bottom: 20px; left: 50px;">
+    <MudCard style="min-height: 80vh; min-width: 200px">
         <MudCardContent>
-            <MudText Typo="Typo.h4"><b>STATS</b></MudText>
+            <MudText Typo="Typo.h4" Style="text-align: center"><b>STATS</b></MudText>
             <br />
-            <MudText Typo="Typo.body1">Last: @getFormatedTime(lastTime)</MudText>
             <MudText Typo="Typo.body1">AO5: @getFormatedTime(averageOfFive)</MudText>
-            <MudText Typo="Typo.body1">Single: 13.98</MudText>
+            <MudText Typo="Typo.body1">AO12: @getFormatedTime(averageOfTwelve)</MudText>
+            <br />
+            @foreach (TimeSpan time in currentTimes)
+            {
+                <MudText Typo="Typo.body1">@currentTimes.IndexOf(time) : @getFormatedTime(time)</MudText>
+            }
         </MudCardContent>
     </MudCard>
 </div>
