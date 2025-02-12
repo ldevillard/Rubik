@@ -5,7 +5,7 @@ namespace RubikApp.Client.Components.Stats
 {
     public partial class TimeStats : ComponentBase
     {
-        List<TimeSpan> currentTimes = new List<TimeSpan>();
+        List<KeyValuePair<int, TimeSpan>> currentTimes = new List<KeyValuePair<int, TimeSpan>>();
 
         TimeSpan lastTime;
         TimeSpan averageOfFive;
@@ -13,7 +13,7 @@ namespace RubikApp.Client.Components.Stats
 
         public void RecordTime(TimeSpan timeToRecord) 
         {
-            currentTimes.Add(timeToRecord);
+            currentTimes.Add(new KeyValuePair<int, TimeSpan>(currentTimes.Count + 1, timeToRecord));
             lastTime = timeToRecord;
             averageOfFive = computeAverage(5);
             averageOfTwelve = computeAverage(12);
@@ -32,7 +32,7 @@ namespace RubikApp.Client.Components.Stats
             }
             else
             {
-                return $"{timeSpan.Seconds:00}.{(timeSpan.Milliseconds / 10):00}";
+                return $"{timeSpan.Seconds:0}.{(timeSpan.Milliseconds / 10):00}";
             }
         }
 
@@ -46,7 +46,8 @@ namespace RubikApp.Client.Components.Stats
             }
 
             // Take last averageOfNumber times
-            List<TimeSpan> lastTimes = currentTimes.Skip(currentTimes.Count - averageOfNumber).ToList();
+            List<TimeSpan> times = currentTimes.Select(x => x.Value).ToList();
+            List<TimeSpan> lastTimes = times.Skip(times.Count - averageOfNumber).ToList();
 
             // Sort them to find the best and the worst
             lastTimes.Sort();
